@@ -1,226 +1,819 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>یادبود پدربزرگ عزیزم</title>
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>یادبود کربلایی ابراهیم دهقان‌نژاد و مادرش</title>
 
-        body {
-            font-family: 'Vazirmatn', sans-serif;
-            background: #0a0a0a;
-            color: #d0d0d0;
-            line-height: 1.8;
-            min-height: 100vh;
-        }
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/nahid-font@v0.1/dist/font-face.css">
 
-        .container {
-            max-width: 480px;
-            margin: 0 auto;
-            background: #141414;
-            min-height: 100vh;
-        }
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Vazirmatn', 'Segoe UI', Tahoma, sans-serif;
+    }
 
-        /* هدر */
-        .header {
-            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
-            padding: 40px 20px 30px;
-            text-align: center;
-            border-bottom: 2px solid #d4af37;
-        }
+    body {
+        background: radial-gradient(circle at top, #1b1b25, #07070b);
+        color: #f5f5f5;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+    }
 
-        .photo {
-            width: 140px;
-            height: 140px;
-            margin: 0 auto 20px;
-            border-radius: 50%;
-            border: 5px solid #000;
-            box-shadow: 0 0 0 2px #d4af37;
-            overflow: hidden;
-        }
+    .container {
+        width: 92%;
+        max-width: 420px;
+        text-align: center;
+    }
 
-        .photo img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(30%);
-        }
+    .card {
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 22px;
+        padding: 22px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+        backdrop-filter: blur(10px);
+    }
 
-        .name {
-            font-size: 24px;
-            font-weight: 700;
-            color: #d4af37;
-            margin-bottom: 8px;
-        }
+    .tomb-title {
+        font-size: 18px;
+        color: gold;
+        margin-bottom: 18px;
+        letter-spacing: 2px;
+        position: relative;
+        display: inline-block;
+        padding: 0 20px;
+    }
 
-        .dates {
-            font-size: 13px;
-            color: #888;
-            letter-spacing: 3px;
-        }
+    .tomb-title::before,
+    .tomb-title::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        width: 30px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, gold, transparent);
+    }
 
-        /* محتوا */
-        .content {
-            padding: 30px 20px;
-        }
+    .tomb-title::before {
+        right: -30px;
+    }
 
-        .section {
-            margin-bottom: 30px;
-        }
+    .tomb-title::after {
+        left: -30px;
+    }
 
-        .section-title {
-            font-size: 16px;
-            font-weight: 700;
-            color: #d4af37;
-            margin-bottom: 15px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #2a2a2a;
-        }
+    .photos-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 14px;
+    }
 
-        .text {
-            font-size: 14px;
-            line-height: 2;
-            color: #b0b0b0;
-            text-align: justify;
-            background: #1a1a1a;
-            padding: 15px;
-            border-radius: 8px;
-            border-right: 3px solid #d4af37;
-        }
+    .photo-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+        max-width: 150px;
+    }
 
-        /* شعر */
-        .poem {
-            background: #1a1a1a;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-        }
+    .photo {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid gold;
+        box-shadow: 0 0 20px rgba(255,215,0,0.25);
+    }
 
-        .poem p {
-            font-size: 15px;
-            line-height: 2.3;
-            color: #c0c0c0;
-            margin: 8px 0;
-        }
+    .photo-name {
+        margin-top: 10px;
+        font-size: 13px;
+        color: gold;
+        font-weight: bold;
+        line-height: 1.5;
+    }
 
-        .poet {
-            margin-top: 15px;
-            font-size: 12px;
-            color: #d4af37;
-            letter-spacing: 2px;
-        }
+    .photo-date {
+        margin-top: 4px;
+        font-size: 11px;
+        color: #bbb;
+        line-height: 1.5;
+    }
 
-        /* صوت */
-        .audio {
-            background: #1a1a1a;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-        }
+    .relation-badge {
+        display: inline-block;
+        margin-top: 6px;
+        font-size: 10px;
+        color: #ffd98a;
+        background: rgba(255,215,0,0.08);
+        padding: 2px 8px;
+        border-radius: 10px;
+        border: 1px solid rgba(255,215,0,0.2);
+    }
 
-        .audio-icon {
-            font-size: 32px;
-            margin-bottom: 10px;
-        }
+    .desc {
+        margin-top: 18px;
+        font-size: 14px;
+        line-height: 1.9;
+        color: #e6e6e6;
+    }
 
-        .audio-label {
-            font-size: 14px;
-            font-weight: 700;
-            color: #d4af37;
-            margin-bottom: 5px;
-        }
+    .poem {
+        margin-top: 16px;
+        padding: 10px;
+        border-radius: 14px;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,215,0,0.15);
+    }
 
-        .audio-sub {
-            font-size: 12px;
-            color: #888;
-            margin-bottom: 15px;
-        }
+    .poem img {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 10px;
+    }
 
-        .audio audio {
-            width: 100%;
-            filter: invert(1) hue-rotate(180deg) brightness(0.8);
-        }
+    .fatiha-btn {
+        margin-top: 18px;
+        width: 100%;
+        padding: 14px;
+        background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,215,0,0.08));
+        border: 1px solid rgba(255,215,0,0.3);
+        border-radius: 14px;
+        color: gold;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
 
-        /* پاورقی */
-        .footer {
-            background: #0f0f0f;
-            padding: 25px 20px;
-            text-align: center;
-            border-top: 1px solid #2a2a2a;
-        }
+    .fatiha-btn:hover {
+        background: linear-gradient(135deg, rgba(255,215,0,0.25), rgba(255,215,0,0.15));
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255,215,0,0.2);
+    }
 
-        .footer-text {
-            font-size: 14px;
-            color: #d4af37;
-            margin-bottom: 5px;
-        }
+    .fatiha-btn:active {
+        transform: translateY(0);
+    }
 
-        .footer-family {
-            font-size: 11px;
-            color: #666;
-        }
-    </style>
+    .fatiha-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    .fatiha-btn svg {
+        width: 20px;
+        height: 20px;
+        fill: gold;
+    }
+
+    /* Gallery Modal */
+    .gallery-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.95);
+        z-index: 1000;
+        backdrop-filter: blur(10px);
+    }
+
+    .gallery-overlay.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    .gallery-container {
+        width: 90%;
+        max-width: 500px;
+        position: relative;
+    }
+
+    .gallery-close {
+        position: absolute;
+        top: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.2);
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+
+    .gallery-close:hover {
+        background: rgba(255,255,255,0.2);
+        transform: translateX(-50%) scale(1.1);
+    }
+
+    .gallery-slider {
+        width: 100%;
+        overflow: hidden;
+        border-radius: 16px;
+        position: relative;
+    }
+
+    .gallery-track {
+        display: flex;
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .gallery-slide {
+        min-width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .gallery-slide img {
+        width: 100%;
+        height: auto;
+        max-height: 70vh;
+        object-fit: contain;
+        border-radius: 16px;
+    }
+
+    .gallery-indicators {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 16px;
+    }
+
+    .indicator {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .indicator.active {
+        background: gold;
+        width: 24px;
+        border-radius: 4px;
+    }
+
+    .gallery-hint {
+        text-align: center;
+        margin-top: 12px;
+        font-size: 12px;
+        color: #aaa;
+    }
+
+    /* Error Toast */
+    .error-toast {
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%) translateY(-100px);
+        background: rgba(255,80,80,0.95);
+        color: white;
+        padding: 12px 20px;
+        border-radius: 12px;
+        font-size: 13px;
+        box-shadow: 0 4px 20px rgba(255,80,80,0.3);
+        z-index: 2000;
+        transition: transform 0.3s ease;
+        backdrop-filter: blur(10px);
+    }
+
+    .error-toast.show {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    /* Audio Player Styles */
+    .audio-player {
+        margin-top: 20px;
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 16px;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .player-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .play-btn {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: none;
+        background: linear-gradient(135deg, #ffcc55, gold);
+        color: #111;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        box-shadow: 0 4px 15px rgba(255,215,0,0.3);
+        flex-shrink: 0;
+    }
+
+    .play-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(255,215,0,0.4);
+    }
+
+    .play-btn:active {
+        transform: scale(0.95);
+    }
+
+    .play-btn svg {
+        width: 24px;
+        height: 24px;
+        fill: #111;
+    }
+
+    .player-info {
+        flex: 1;
+        text-align: right;
+    }
+
+    .player-title {
+        font-size: 14px;
+        font-weight: bold;
+        color: gold;
+        margin-bottom: 4px;
+    }
+
+    .player-subtitle {
+        font-size: 11px;
+        color: #aaa;
+    }
+
+    .progress-container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .time {
+        font-size: 11px;
+        color: #aaa;
+        min-width: 40px;
+        font-family: monospace;
+    }
+
+    .progress-bar {
+        flex: 1;
+        height: 4px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 2px;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, gold, #ffcc55);
+        border-radius: 2px;
+        width: 0%;
+        transition: width 0.1s linear;
+    }
+
+    .volume-control {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0 4px;
+    }
+
+    .volume-icon {
+        width: 20px;
+        height: 20px;
+        fill: #aaa;
+        cursor: pointer;
+        transition: fill 0.2s;
+    }
+
+    .volume-icon:hover {
+        fill: gold;
+    }
+
+    .volume-slider {
+        flex: 1;
+        height: 4px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 2px;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .volume-fill {
+        height: 100%;
+        background: gold;
+        border-radius: 2px;
+        width: 100%;
+    }
+
+    .hint {
+        margin-top: 10px;
+        font-size: 12px;
+        color: #aaa;
+    }
+</style>
 </head>
+
 <body>
 
-    <div class="container">
-        
-        <div class="header">
-            <div class="photo">
-                <img src="grandpa.jpg" alt="پدربزرگ عزیزم">
+<audio id="audio" loop preload="auto">
+    <source src="voice.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="hamdAudio" preload="auto">
+    <source src="hamd.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="tohidAudio" preload="auto">
+    <source src="tohid.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+    <div class="card">
+
+        <div class="tomb-title">آرامگاه</div>
+        <!-- دو عکس کنار هم -->
+        <div class="photos-wrapper">
+            <div class="photo-item">
+                <img class="photo" src="photo.jpg" alt="کربلایی ابراهیم">
+                <div class="photo-name">کربلایی ابراهیم<br>دهقان‌نژاد</div>
+                <div class="photo-date">۱۳۲۵/۵/۵ — ۱۴۰۵/۳/۲۵</div>
+                <div class="relation-badge">وفات: شب اول محرم ۱۴۴۸ ه.ق</div>
             </div>
-            <h1 class="name">یادبود پدربزرگ عزیزم</h1>
-            <p class="dates">۱۳۱۰ — ۱۴۰۵</p>
+
+            <div class="photo-item">
+                <img class="photo" src="photo2.jpg" alt="سیده مدینه آل رسول">
+                <div class="photo-name">سیده مدینه<br>آل رسول</div>
+                <div class="photo-date">۱۲۹۴ — ۱۳۷۹/۶/۲۸</div>
+                <div class="relation-badge">وفات: 19 جمادی الثانی 1421</div>
+            </div>
         </div>
 
-        <div class="content">
-            
-            <div class="section">
-                <h2 class="section-title">به یاد او</h2>
-                <p class="text">
-                    پدربزرگ مهربانم، مردی از جنس نور و صداقت بود. دستان پینه‌بسته‌اش حکایت از سال‌ها تلاش و عشق داشت. 
-                    لبخند گرمش، آرامش‌بخش‌ترین موسیقی زندگی ما بود. هرچند رفت، اما یادش در قلب‌هایمان جاودانه است.
-                    او به ما آموخت که مهربانی، بزرگ‌ترین میراثی است که می‌توان برای آیندگان به جا گذاشت.
-                </p>
-            </div>
+        <div class="desc">
+            یادشان همیشه زنده است...  
+            مادر و فرزندی با ایمان و مهربان که حضورشان برکت بود و یادشان همیشه در دل‌ها باقی می‌ماند.
+        </div>
 
-            <div class="section">
-                <h2 class="section-title">از زبان دل</h2>
-                <div class="poem">
-                    <p>بازآ کزین چرخ بلند، آواز نیکوان شنو</p>
-                    <p>کآواز نیک، جاودان است و جهان، مهمان‌سرای اوست</p>
-                    <p>هر آن‌کس که نام نیکو نهاد بر این خاک</p>
-                    <p>نمرده است او، هرچند در خاک خفته باشد</p>
-                    <p class="poet">— به یادش —</p>
+        <div class="poem">
+            <img src="sher.jpg" alt="شعر یادبود">
+        </div>
+
+        <button class="fatiha-btn" id="fatihaBtn">
+            <svg viewBox="0 0 24 24">
+                <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/>
+            </svg>
+            فاتحه
+        </button>
+
+        <div class="audio-player">
+            <div class="player-header">
+                <button class="play-btn" id="playBtn">
+                    <svg id="playIcon" viewBox="0 0 24 24">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                </button>
+                <div class="player-info">
+                    <div class="player-title">صوت یادبود</div>
+                    <div class="player-subtitle" id="status">برای پخش کلیک کنید</div>
                 </div>
             </div>
 
-            <div class="section">
-                <h2 class="section-title">صدای ماندگار</h2>
-                <div class="audio">
-                    <div class="audio-icon">🎵</div>
-                    <p class="audio-label">صدای پدربزرگ</p>
-                    <p class="audio-sub">برای شنیدن، دکمه پخش را بزنید</p>
-                    <audio controls>
-                        <source src="grandpa-voice.mp3" type="audio/mpeg">
-                    </audio>
+            <div class="progress-container">
+                <span class="time" id="currentTime">0:00</span>
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
                 </div>
+                <span class="time" id="duration">0:00</span>
             </div>
 
+            <div class="volume-control">
+                <svg class="volume-icon" id="volumeIcon" viewBox="0 0 24 24">
+                    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                </svg>
+                <div class="volume-slider" id="volumeSlider">
+                    <div class="volume-fill" id="volumeFill"></div>
+                </div>
+            </div>
         </div>
 
-        <div class="footer">
-            <p class="footer-text">روحت شاد و یادت گرامی</p>
-            <p class="footer-family">از طرف خانواده داغدار</p>
+        <div class="hint">
+            (برای پخش خودکار، یک بار روی صفحه لمس کنید)
         </div>
 
     </div>
+</div>
+
+<!-- Gallery Modal -->
+<div class="gallery-overlay" id="galleryOverlay">
+    <div class="gallery-container">
+        <button class="gallery-close" id="galleryClose">×</button>
+        <div class="gallery-slider">
+            <div class="gallery-track" id="galleryTrack">
+                <div class="gallery-slide">
+                    <img src="hamd.jpg" alt="حمد">
+                </div>
+                <div class="gallery-slide">
+                    <img src="tohid.jpg" alt="توحید">
+                </div>
+            </div>
+        </div>
+        <div class="gallery-indicators">
+            <div class="indicator active" data-index="0"></div>
+            <div class="indicator" data-index="1"></div>
+        </div>
+        <div class="gallery-hint">برای تغییر، به چپ یا راست بکشید</div>
+    </div>
+</div>
+
+<!-- Error Toast -->
+<div class="error-toast" id="errorToast">
+    لطفاً ابتدا صوت یادبود را متوقف کنید
+</div>
+
+<script>
+    // Audio elements
+    const audio = document.getElementById("audio");
+    const hamdAudio = document.getElementById("hamdAudio");
+    const tohidAudio = document.getElementById("tohidAudio");
+    
+    // Main player elements
+    const playBtn = document.getElementById("playBtn");
+    const playIcon = document.getElementById("playIcon");
+    const status = document.getElementById("status");
+    const progressBar = document.getElementById("progressBar");
+    const progressFill = document.getElementById("progressFill");
+    const currentTimeEl = document.getElementById("currentTime");
+    const durationEl = document.getElementById("duration");
+    const volumeSlider = document.getElementById("volumeSlider");
+    const volumeFill = document.getElementById("volumeFill");
+    const volumeIcon = document.getElementById("volumeIcon");
+    
+    // Gallery elements
+    const fatihaBtn = document.getElementById("fatihaBtn");
+    const galleryOverlay = document.getElementById("galleryOverlay");
+    const galleryClose = document.getElementById("galleryClose");
+    const galleryTrack = document.getElementById("galleryTrack");
+    const indicators = document.querySelectorAll('.indicator');
+    const errorToast = document.getElementById("errorToast");
+    
+    let isPlaying = false;
+    let isMuted = false;
+    let previousVolume = 1;
+    let currentSlide = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    function formatTime(seconds) {
+        if (isNaN(seconds)) return "0:00";
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs.toString().padStart(2, '0')}`;
+    }
+
+    function showError(message) {
+        errorToast.textContent = message;
+        errorToast.classList.add('show');
+        setTimeout(() => {
+            errorToast.classList.remove('show');
+        }, 3000);
+    }
+
+    function togglePlay() {
+        if (isPlaying) {
+            audio.pause();
+            isPlaying = false;
+            playIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+            status.textContent = 'متوقف شده';
+        } else {
+            audio.play().then(() => {
+                isPlaying = true;
+                playIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+                status.textContent = 'در حال پخش...';
+            }).catch(err => {
+                console.log("Play failed:", err);
+                status.textContent = 'خطا در پخش';
+            });
+        }
+    }
+
+    audio.addEventListener('timeupdate', () => {
+        if (audio.duration) {
+            const progress = (audio.currentTime / audio.duration) * 100;
+            progressFill.style.width = progress + '%';
+            currentTimeEl.textContent = formatTime(audio.currentTime);
+        }
+    });
+
+    audio.addEventListener('loadedmetadata', () => {
+        durationEl.textContent = formatTime(audio.duration);
+    });
+
+    function seek(event) {
+        const rect = progressBar.getBoundingClientRect();
+        const pos = (event.clientX - rect.left) / rect.width;
+        audio.currentTime = pos * audio.duration;
+    }
+
+    function setVolume(event) {
+        const rect = volumeSlider.getBoundingClientRect();
+        const pos = (event.clientX - rect.left) / rect.width;
+        const volume = Math.max(0, Math.min(1, pos));
+        audio.volume = volume;
+        volumeFill.style.width = (volume * 100) + '%';
+        isMuted = false;
+        updateVolumeIcon();
+    }
+
+    function toggleMute() {
+        if (isMuted) {
+            audio.volume = previousVolume;
+            volumeFill.style.width = (previousVolume * 100) + '%';
+            isMuted = false;
+        } else {
+            previousVolume = audio.volume;
+            audio.volume = 0;
+            volumeFill.style.width = '0%';
+            isMuted = true;
+        }
+        updateVolumeIcon();
+    }
+
+    function updateVolumeIcon() {
+        if (isMuted || audio.volume === 0) {
+            volumeIcon.innerHTML = '<path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>';
+        } else if (audio.volume < 0.5) {
+            volumeIcon.innerHTML = '<path d="M7 9v6h4l5 5V4l-5 5H7z"/>';
+        } else {
+            volumeIcon.innerHTML = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>';
+        }
+    }
+
+    function openGallery() {
+        if (isPlaying) {
+            showError('لطفاً ابتدا صوت یادبود را متوقف کنید');
+            return;
+        }
+        
+        galleryOverlay.classList.add('active');
+        currentSlide = 0;
+        updateSlide();
+        
+        hamdAudio.currentTime = 0;
+        hamdAudio.play().catch(err => console.log("Hamd play failed:", err));
+    }
+
+    function closeGallery() {
+        galleryOverlay.classList.remove('active');
+        hamdAudio.pause();
+        hamdAudio.currentTime = 0;
+        tohidAudio.pause();
+        tohidAudio.currentTime = 0;
+    }
+
+    function updateSlide() {
+        galleryTrack.style.transform = `translateX(${currentSlide * 100}%)`;
+        indicators.forEach((ind, idx) => {
+            ind.classList.toggle('active', idx === currentSlide);
+        });
+    }
+
+    function nextSlide() {
+        if (currentSlide < 1) {
+            currentSlide++;
+            updateSlide();
+        }
+    }
+
+    function prevSlide() {
+        if (currentSlide > 0) {
+            currentSlide--;
+            updateSlide();
+        }
+    }
+
+    hamdAudio.addEventListener('ended', () => {
+        tohidAudio.currentTime = 0;
+        tohidAudio.play().catch(err => console.log("Tohid play failed:", err));
+        nextSlide();
+    });
+
+    tohidAudio.addEventListener('ended', () => {
+        setTimeout(() => {
+            closeGallery();
+        }, 1000);
+    });
+
+    galleryTrack.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    galleryTrack.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        }
+    }
+
+    playBtn.addEventListener('click', togglePlay);
+    progressBar.addEventListener('click', seek);
+    volumeSlider.addEventListener('click', setVolume);
+    volumeIcon.addEventListener('click', toggleMute);
+    fatihaBtn.addEventListener('click', openGallery);
+    galleryClose.addEventListener('click', closeGallery);
+    
+    indicators.forEach(indicator => {
+        indicator.addEventListener('click', () => {
+            currentSlide = parseInt(indicator.dataset.index);
+            updateSlide();
+        });
+    });
+
+    galleryOverlay.addEventListener('click', (e) => {
+        if (e.target === galleryOverlay) {
+            closeGallery();
+        }
+    });
+
+    function autoPlayOnInteraction() {
+        audio.play().then(() => {
+            isPlaying = true;
+            playIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+            status.textContent = 'در حال پخش...';
+        }).catch(err => {
+            console.log("Autoplay failed:", err);
+        });
+    }
+
+    let hasInteracted = false;
+    function handleFirstInteraction() {
+        if (!hasInteracted) {
+            hasInteracted = true;
+            autoPlayOnInteraction();
+            document.removeEventListener('click', handleFirstInteraction);
+            document.removeEventListener('touchstart', handleFirstInteraction);
+        }
+    }
+
+    document.addEventListener('click', handleFirstInteraction);
+    document.addEventListener('touchstart', handleFirstInteraction);
+
+    audio.addEventListener('ended', () => {
+        audio.currentTime = 0;
+        audio.play();
+    });
+</script>
 
 </body>
 </html>
+
