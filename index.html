@@ -142,28 +142,31 @@
         border-radius: 10px;
     }
 
+    /* دکمه فاتحه واضح‌تر */
     .fatiha-btn {
         margin-top: 18px;
         width: 100%;
-        padding: 14px;
-        background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,215,0,0.08));
-        border: 1px solid rgba(255,215,0,0.3);
+        padding: 16px;
+        background: linear-gradient(135deg, rgba(255,215,0,0.35), rgba(255,215,0,0.18));
+        border: 2px solid gold;
         border-radius: 14px;
-        color: gold;
-        font-size: 15px;
+        color: #fff;
+        font-size: 17px;
         font-weight: bold;
         cursor: pointer;
         transition: all 0.3s ease;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 8px;
+        gap: 10px;
+        box-shadow: 0 4px 15px rgba(255,215,0,0.15);
+        text-shadow: 0 1px 2px rgba(0,0,0,0.3);
     }
 
     .fatiha-btn:hover {
-        background: linear-gradient(135deg, rgba(255,215,0,0.25), rgba(255,215,0,0.15));
+        background: linear-gradient(135deg, rgba(255,215,0,0.5), rgba(255,215,0,0.25));
         transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(255,215,0,0.2);
+        box-shadow: 0 6px 25px rgba(255,215,0,0.35);
     }
 
     .fatiha-btn:active {
@@ -176,8 +179,8 @@
     }
 
     .fatiha-btn svg {
-        width: 20px;
-        height: 20px;
+        width: 22px;
+        height: 22px;
         fill: gold;
     }
 
@@ -229,6 +232,7 @@
         align-items: center;
         justify-content: center;
         transition: all 0.3s ease;
+        z-index: 10;
     }
 
     .gallery-close:hover {
@@ -241,11 +245,13 @@
         overflow: hidden;
         border-radius: 16px;
         position: relative;
+        touch-action: pan-y;
     }
 
     .gallery-track {
         display: flex;
         transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        will-change: transform;
     }
 
     .gallery-slide {
@@ -253,6 +259,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-shrink: 0;
     }
 
     .gallery-slide img {
@@ -261,6 +268,8 @@
         max-height: 70vh;
         object-fit: contain;
         border-radius: 16px;
+        pointer-events: none;
+        -webkit-user-drag: none;
     }
 
     .gallery-indicators {
@@ -290,6 +299,38 @@
         margin-top: 12px;
         font-size: 12px;
         color: #aaa;
+    }
+
+    /* Intro Overlay - صفحه نامرئی برای پخش خودکار */
+    .intro-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        z-index: 9999;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .intro-overlay .intro-hint {
+        background: rgba(0,0,0,0.7);
+        color: gold;
+        padding: 16px 24px;
+        border-radius: 14px;
+        font-size: 15px;
+        border: 1px solid rgba(255,215,0,0.3);
+        backdrop-filter: blur(10px);
+        animation: pulse 2s ease-in-out infinite;
+        pointer-events: none;
+    }
+
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 0.9; }
+        50% { transform: scale(1.05); opacity: 1; }
     }
 
     /* Error Toast */
@@ -456,6 +497,11 @@
 
 <body>
 
+<!-- Intro Overlay - برای پخش خودکار با اولین کلیک -->
+<div class="intro-overlay" id="introOverlay">
+    <div class="intro-hint">برای ورود و پخش صوت یادبود لمس کنید</div>
+</div>
+
 <audio id="audio" loop preload="auto">
     <source src="voice.mp3" type="audio/mpeg">
 </audio>
@@ -472,7 +518,6 @@
     <div class="card">
 
         <div class="tomb-title">آرامگاه</div>
-        <!-- دو عکس کنار هم -->
         <div class="photos-wrapper">
             <div class="photo-item">
                 <img class="photo" src="photo.jpg" alt="کربلایی ابراهیم">
@@ -502,7 +547,7 @@
             <svg viewBox="0 0 24 24">
                 <path d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z"/>
             </svg>
-            فاتحه
+            خواندن فاتحه
         </button>
 
         <div class="audio-player">
@@ -514,7 +559,7 @@
                 </button>
                 <div class="player-info">
                     <div class="player-title">صوت یادبود</div>
-                    <div class="player-subtitle" id="status">برای پخش کلیک کنید</div>
+                    <div class="player-subtitle" id="status">در انتظار پخش</div>
                 </div>
             </div>
 
@@ -534,10 +579,6 @@
                     <div class="volume-fill" id="volumeFill"></div>
                 </div>
             </div>
-        </div>
-
-        <div class="hint">
-            (برای پخش خودکار، یک بار روی صفحه لمس کنید)
         </div>
 
     </div>
@@ -596,12 +637,17 @@
     const indicators = document.querySelectorAll('.indicator');
     const errorToast = document.getElementById("errorToast");
     
+    // Intro overlay
+    const introOverlay = document.getElementById("introOverlay");
+    
     let isPlaying = false;
     let isMuted = false;
     let previousVolume = 1;
     let currentSlide = 0;
+    const totalSlides = 2;
     let touchStartX = 0;
     let touchEndX = 0;
+    let isAnimating = false;
 
     function formatTime(seconds) {
         if (isNaN(seconds)) return "0:00";
@@ -618,6 +664,32 @@
         }, 3000);
     }
 
+    // ============ Intro Overlay - پخش خودکار ============
+    function handleIntroClick() {
+        audio.play().then(() => {
+            isPlaying = true;
+            playIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
+            status.textContent = 'در حال پخش...';
+        }).catch(err => {
+            console.log("Autoplay failed:", err);
+            status.textContent = 'برای پخش روی دکمه کلیک کنید';
+        });
+        
+        // حذف overlay با انیمیشن محو شدن
+        introOverlay.style.transition = 'opacity 0.5s ease';
+        introOverlay.style.opacity = '0';
+        setTimeout(() => {
+            introOverlay.remove();
+        }, 500);
+    }
+
+    introOverlay.addEventListener('click', handleIntroClick);
+    introOverlay.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        handleIntroClick();
+    });
+
+    // ============ Main Audio Player ============
     function togglePlay() {
         if (isPlaying) {
             audio.pause();
@@ -688,6 +760,7 @@
         }
     }
 
+    // ============ Gallery - اسلایدر بینهایت ============
     function openGallery() {
         if (isPlaying) {
             showError('لطفاً ابتدا صوت یادبود را متوقف کنید');
@@ -696,7 +769,7 @@
         
         galleryOverlay.classList.add('active');
         currentSlide = 0;
-        updateSlide();
+        updateSlide(false); // بدون انیمیشن برای موقعیت اولیه
         
         hamdAudio.currentTime = 0;
         hamdAudio.play().catch(err => console.log("Hamd play failed:", err));
@@ -710,25 +783,38 @@
         tohidAudio.currentTime = 0;
     }
 
-    function updateSlide() {
-        galleryTrack.style.transform = `translateX(${currentSlide * 100}%)`;
+    function updateSlide(animate = true) {
+        if (isAnimating && animate) return;
+        
+        if (animate) {
+            isAnimating = true;
+            setTimeout(() => { isAnimating = false; }, 400);
+        }
+        
+        // در RTL: اسلاید 0 سمت راست، اسلاید 1 سمت چپ
+        // برای رفتن به اسلاید 1 باید translateX منفی باشد
+        if (animate) {
+            galleryTrack.style.transition = 'transform 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
+        } else {
+            galleryTrack.style.transition = 'none';
+        }
+        
+        galleryTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
         indicators.forEach((ind, idx) => {
             ind.classList.toggle('active', idx === currentSlide);
         });
     }
 
+    // ناوبری بینهایت (circular) بین دو اسلاید
     function nextSlide() {
-        if (currentSlide < 1) {
-            currentSlide++;
-            updateSlide();
-        }
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateSlide(true);
     }
 
     function prevSlide() {
-        if (currentSlide > 0) {
-            currentSlide--;
-            updateSlide();
-        }
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateSlide(true);
     }
 
     hamdAudio.addEventListener('ended', () => {
@@ -743,28 +829,60 @@
         }, 1000);
     });
 
+    // ============ Touch Events برای اسلایدر ============
     galleryTrack.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
-    });
+    }, { passive: true });
 
     galleryTrack.addEventListener('touchend', (e) => {
         touchEndX = e.changedTouches[0].screenX;
         handleSwipe();
+    }, { passive: true });
+
+    // Mouse events برای دسکتاپ
+    let mouseStartX = 0;
+    let isMouseDown = false;
+
+    galleryTrack.addEventListener('mousedown', (e) => {
+        isMouseDown = true;
+        mouseStartX = e.clientX;
+        e.preventDefault();
+    });
+
+    galleryTrack.addEventListener('mousemove', (e) => {
+        if (!isMouseDown) return;
+        e.preventDefault();
+    });
+
+    galleryTrack.addEventListener('mouseup', (e) => {
+        if (!isMouseDown) return;
+        isMouseDown = false;
+        touchStartX = mouseStartX;
+        touchEndX = e.clientX;
+        handleSwipe();
+    });
+
+    galleryTrack.addEventListener('mouseleave', () => {
+        isMouseDown = false;
     });
 
     function handleSwipe() {
-        const swipeThreshold = 50;
+        const swipeThreshold = 40;
         const diff = touchStartX - touchEndX;
         
-        if (Math.abs(diff) > swipeThreshold) {
-            if (diff > 0) {
-                nextSlide();
-            } else {
-                prevSlide();
-            }
+        if (Math.abs(diff) < swipeThreshold) return;
+        
+        // در RTL:
+        // کشیدن به چپ (diff > 0) = nextSlide
+        // کشیدن به راست (diff < 0) = prevSlide
+        if (diff > 0) {
+            nextSlide();
+        } else {
+            prevSlide();
         }
     }
 
+    // ============ Event Listeners ============
     playBtn.addEventListener('click', togglePlay);
     progressBar.addEventListener('click', seek);
     volumeSlider.addEventListener('click', setVolume);
@@ -775,7 +893,7 @@
     indicators.forEach(indicator => {
         indicator.addEventListener('click', () => {
             currentSlide = parseInt(indicator.dataset.index);
-            updateSlide();
+            updateSlide(true);
         });
     });
 
@@ -785,32 +903,17 @@
         }
     });
 
-    function autoPlayOnInteraction() {
-        audio.play().then(() => {
-            isPlaying = true;
-            playIcon.innerHTML = '<path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>';
-            status.textContent = 'در حال پخش...';
-        }).catch(err => {
-            console.log("Autoplay failed:", err);
-        });
-    }
-
-    let hasInteracted = false;
-    function handleFirstInteraction() {
-        if (!hasInteracted) {
-            hasInteracted = true;
-            autoPlayOnInteraction();
-            document.removeEventListener('click', handleFirstInteraction);
-            document.removeEventListener('touchstart', handleFirstInteraction);
-        }
-    }
-
-    document.addEventListener('click', handleFirstInteraction);
-    document.addEventListener('touchstart', handleFirstInteraction);
-
+    // Handle audio end (loop)
     audio.addEventListener('ended', () => {
         audio.currentTime = 0;
         audio.play();
+    });
+
+    // جلوگیری از منوی context در موبایل
+    document.addEventListener('contextmenu', (e) => {
+        if (e.target.closest('.gallery-slider')) {
+            e.preventDefault();
+        }
     });
 </script>
 
